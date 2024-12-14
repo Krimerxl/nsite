@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Novoselyca UA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(135deg, #8A2BE2, #FF6347);
+            color: #fff;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 50px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        header h1 {
+            font-size: 5em;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 0;
+            color: #FF6347;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.5em;
+            color: #fff;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            z-index: 1;
+        }
+
+        .navbar a {
+            padding: 10px 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #FF6347;
+            transform: scale(1.1);
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 50px;
+            gap: 40px;
+            animation: slideIn 2s ease-out;
+        }
+
+        .content .box {
+            background-color: #222;
+            padding: 40px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .content .box h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .content .box p {
+            font-size: 1.1em;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .content .box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #FF6347;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Модальні вікна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            padding: 40px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        .modal h3 {
+            font-size: 2.2em;
+            color: #FF6347;
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            font-size: 1.1em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .modal button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal button:hover {
+            background-color: #8A2BE2;
+        }
+
+        .telegram-link {
+            color: #00BFFF;
+            font-weight: bold;
+        }
+
+        .telegram-info {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+
+            .navbar a {
+                font-size: 1em;
+                padding: 8px 20px;
+            }
+
+            .content {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content .box {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .modal {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .navbar a {
+                font-size: 0.9em;
+            }
+
+            .content .box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>NovosRBX</h1>
+    <p>Група Roblox: Нові можливості для геймерів</p>
+    <div class="navbar">
+        <a href="#" id="openGameModal">Ігри</a>
+        <a href="#" id="openCommunityModal">Спільнота</a>
+        <a href="#" id="openEventsModal">Події</a>
+        <a href="#" id="openInfo">Про Нас</a>
+    </div>
+</header>
+
+<div class="content">
+    <div class="box">
+        <h3>ігри</h3>
+        <p>Ось всі ігри, що вийшли від <strong>NovosRBX UA</strong>!</p>
+        <button id="openGameModalButton">Детальніше</button>
+    </div>
+    <div class="box">
+        <h3>Зустрічі геймерів</h3>
+        <p>Приєднуйтесь до нашої спільноти Roblox. Долучайтеся до Discord та Telegram!</p>
+        <button id="openCommunityModalButton">Приєднатися</button>
+    </div>
+    <div class="box">
+        <h3>Майбутні події</h3>
+        <p>Будьте в курсі всіх новин у світі Roblox. Підпишіться на наш Telegram канал!</p>
+        <button id="openEventsModalButton">Дізнатися більше</button>
+    </div>
+    <div class="box">
+        <h3>Про Нас</h3>
+        <p>ВИ можете дізнатись білше про нас тут</p>
+        <button id="openInfo" onclick="window.location.href='indexes/index2.html';">Перейти на  сторінку</button>
+    </div>
+</div>
+
+<!-- Модальні вікна -->
+<div id="gameModal" class="modal">
+    <h3>Ігри від NovosRBX UA</h3>
+    <p>Це ігри, що були розроблені командою NovosRBX UA. Вибирайте та починайте грати!</p>
+    <ul>
+        <li>Новий світ Roblox</li>
+        <li>Секрети міста</li>
+        <li>Пригоди в Roblox</li>
+    </ul>
+    <button id="closeGameModal">Закрити</button>
+</div>
+
+<div id="communityModal" class="modal">
+    <h3>Спільнота NovosRBX UA</h3>
+    <p>Приєднуйтесь до нашої спільноти на <strong><a href="https://t.me/novifroblox" class="telegram-link" target="_blank">Telegram</a></strong> та отримуйте новини!</p>
+    <p class="telegram-info">Кількість учасників: <strong>13+</strong></p>
+    <p>Також Приєднуйтесь до нашого Discord <strong><a href="https://discord.gg/7RxKvZ3b" class="discord-link" target="_blank">Discord</a></strong></p>
+    <button id="closeCommunityModal">Закрити</button>
+</div>
+
+<div id="eventsModal" class="modal">
+    <h3>Майбутні події</h3>
+    <p>Не пропустіть важливі події. Слідкуйте за новинами та оновленнями у нашому <strong><a href="https://t.me/novifroblox" class="telegram-link" target="_blank">Telegram</a></strong>.</p>
+    <p class="telegram-info">Кількість учасників: <strong>13+</strong></p>
+    <button id="closeEventsModal">Закрити</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 Novoselyca UA | <a href="https://t.me/novifroblox" target="_blank">Приєднуйтесь до нас на Telegram</a></p>
+</footer>
+
+<script>
+    document.getElementById('openGameModalButton').addEventListener('click', () => {
+        document.getElementById('gameModal').style.display = 'block';
+    });
+
+    document.getElementById('openCommunityModalButton').addEventListener('click', () => {
+        document.getElementById('communityModal').style.display = 'block';
+    });
+
+    document.getElementById('openEventsModalButton').addEventListener('click', () => {
+        document.getElementById('eventsModal').style.display = 'block';
+    });
+
+    // Закриття модальних вікон
+    document.getElementById('closeGameModal').addEventListener('click', () => {
+        document.getElementById('gameModal').style.display = 'none';
+    });
+
+    document.getElementById('closeCommunityModal').addEventListener('click', () => {
+        document.getElementById('communityModal').style.display = 'none';
+    });
+
+    document.getElementById('closeEventsModal').addEventListener('click', () => {
+        document.getElementById('eventsModal').style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
